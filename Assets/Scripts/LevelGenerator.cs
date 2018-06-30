@@ -31,7 +31,7 @@ public class LevelGenerator : MonoBehaviour {
 
 
     void Start () {
-        InitBoard(18, 18);
+        InitBoard(BoardLength, BoardWidth);
 	}
 
 	void Update () {
