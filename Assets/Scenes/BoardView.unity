@@ -390,6 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96166d749295fb44d8e3387cb04100dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CaseModel: {fileID: 1672771735567716, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
+  CaseModel: {fileID: 1651498520867122, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
   BoardLength: 5
   BoardWidth: 5
