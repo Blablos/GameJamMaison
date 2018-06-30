@@ -369,7 +369,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CaseModels:
-  - {fileID: 1651498520867122, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
+  - {fileID: 1032919078536840, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
   - {fileID: 1207601820119078, guid: 4c7c60e718fab1845961ab2b03925fa6, type: 2}
-  BoardLength: 7
-  BoardWidth: 5
+  - {fileID: 1685659978329534, guid: a12c63e55fa28d044a6de2327a77264b, type: 2}
+  BoardLength: 5
+  BoardWidth: 6
+  csv: {fileID: 4900000, guid: 61cd4c942b34cf24ca82113028b20020, type: 3}

@@ -9,23 +9,43 @@ public class LevelGenerator : MonoBehaviour {
     public GameObject[] CaseModels;
     public int BoardLength = 5;
     public int BoardWidth = 5;
-
+    public TextAsset csv;
     void InitBoard(int longueur, int largeur)
     {
         BoardPositions = new GameObject[longueur, largeur];
+        var nomMalinDeVar = CSVReader.SplitCsvGrid(csv.text);
         for (int i = 0; i < longueur; i++)
         {
+            string logError = "";
             for (int j = 0; j < largeur; j++)
             {
-                var CaseInstance = Object.Instantiate(CaseModels[0],new Vector3(i,0, j), new Quaternion(),this.gameObject.transform);
-
-                if ((i+j)==4)
+                GameObject CaseInstance;
+                logError += "|" + nomMalinDeVar[i, j] + "| ";
+                switch (nomMalinDeVar[i,j])
                 {
-                    //CaseInstance.GetComponentInChildren<Renderer>().material.color = Color.black;
-                    CaseInstance = Object.Instantiate(CaseModels[1], new Vector3(i, 0.5f, j), new Quaternion(), this.gameObject.transform);
+                    case "0":
+                        CaseInstance = Object.Instantiate(CaseModels[0], new Vector3(i, 0, j), new Quaternion(), this.gameObject.transform);
+                        break;
+                    case "1":
+                        CaseInstance = Object.Instantiate(CaseModels[1], new Vector3(i, 0.5f, j), new Quaternion(), this.gameObject.transform);
+                        break;
+                    default:
+                        CaseInstance = Object.Instantiate(CaseModels[2], new Vector3(i, 0, j), new Quaternion(), this.gameObject.transform);
+                        break;
                 }
                 BoardPositions[i, j] = CaseInstance;
             }
+            Debug.Log(logError);
+        }
+
+        for (int i = 0; i < longueur; i++)
+        {
+            string logError = "";
+            for (int j = 0; j < largeur; j++)
+            {
+                logError += BoardPositions[i,j].tag + " ";
+            }
+            Debug.Log(logError);
         }
     }
 

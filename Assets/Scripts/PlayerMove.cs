@@ -46,6 +46,9 @@ public class PlayerMove : MonoBehaviour {
                 case "Wall":
                     positionPreview = startPosition;
                     break;
+                case "Void":
+                    positionPreview = startPosition;
+                    break;
                 default:
                     break;
             }
