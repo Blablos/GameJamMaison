@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class LevelGenerator : MonoBehaviour {
 
     private GameObject[,] BoardPositions;
-    public GameObject CaseModel;
+    public GameObject[] CaseModels;
     public int BoardLength = 5;
     public int BoardWidth = 5;
 
@@ -17,15 +17,22 @@ public class LevelGenerator : MonoBehaviour {
         {
             for (int j = 0; j < largeur; j++)
             {
-                var CaseInstance = Object.Instantiate(CaseModel,new Vector3(i,0, j), new Quaternion(),this.gameObject.transform);
+                var CaseInstance = Object.Instantiate(CaseModels[0],new Vector3(i,0, j), new Quaternion(),this.gameObject.transform);
 
-                if ((i+j)%2==0)
+                if ((i+j)==4)
                 {
-                    CaseInstance.GetComponentInChildren<Renderer>().material.color = Color.black;
+                    //CaseInstance.GetComponentInChildren<Renderer>().material.color = Color.black;
+                    CaseInstance = Object.Instantiate(CaseModels[1], new Vector3(i, 0.5f, j), new Quaternion(), this.gameObject.transform);
                 }
                 BoardPositions[i, j] = CaseInstance;
             }
         }
+    }
+
+
+    public string GetCaseTypeTag(int posX, int posY)
+    {
+        return BoardPositions[posX, posY].tag;
     }
 
 

@@ -18,34 +18,42 @@ public class PlayerMove : MonoBehaviour {
     }
 
 	void Update () {
-        
         Vector3 PlayerPosition = transform.position;
-        if (!isMoving) {
+
+        if(!isMoving)
+        {
+            Vector3 positionPreview = startPosition;
+
             if (Input.GetKeyDown(KeyCode.LeftArrow) && (endPosition.x - 1 >= 0))
             {
-                startTime = Time.time;
-                endPosition = new Vector3(endPosition.x - 1, endPosition.y, endPosition.z);
-                journeyLength = Vector3.Distance(endPosition, startPosition);
-                isMoving = true;
+                positionPreview = new Vector3(startPosition.x - 1, startPosition.y, startPosition.z);
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow) && (endPosition.x + 1 < levelGenerator.BoardLength))
             {
-                startTime = Time.time;
-                endPosition = new Vector3(endPosition.x + 1, endPosition.y, endPosition.z);
-                journeyLength = Vector3.Distance(endPosition, startPosition);
-                isMoving = true;
-            }
-            else if (Input.GetKeyDown(KeyCode.UpArrow) && (endPosition.z + 1 < levelGenerator.BoardWidth))
-            {
-                startTime = Time.time;
-                endPosition = new Vector3(endPosition.x, endPosition.y, endPosition.z + 1);
-                journeyLength = Vector3.Distance(endPosition, startPosition);
-                isMoving = true;
+                positionPreview = new Vector3(startPosition.x + 1, startPosition.y, startPosition.z);
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow) && (endPosition.z - 1 >= 0))
             {
+                positionPreview = new Vector3(startPosition.x, startPosition.y, startPosition.z - 1);
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow) && (endPosition.z + 1 < levelGenerator.BoardWidth))
+            {
+                positionPreview = new Vector3(startPosition.x, startPosition.y, startPosition.z + 1);
+            }
+
+            switch(levelGenerator.GetCaseTypeTag((int) positionPreview.x,(int) positionPreview.z))
+            {
+                case "Wall":
+                    positionPreview = startPosition;
+                    break;
+                default:
+                    break;
+            }
+
+            if(positionPreview != startPosition)
+            {
                 startTime = Time.time;
-                endPosition = new Vector3(endPosition.x, endPosition.y, endPosition.z - 1);
+                endPosition = positionPreview;
                 journeyLength = Vector3.Distance(endPosition, startPosition);
                 isMoving = true;
             }

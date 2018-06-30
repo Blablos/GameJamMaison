@@ -285,6 +285,7 @@ MonoBehaviour:
   journeyLength: 0
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
+  levelGenerator: {fileID: 0}
 --- !u!1001 &1818170484
 Prefab:
   m_ObjectHideFlags: 0
@@ -367,6 +368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96166d749295fb44d8e3387cb04100dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CaseModel: {fileID: 1651498520867122, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
-  BoardLength: 5
+  CaseModels:
+  - {fileID: 1651498520867122, guid: 4d9aeaaaf3473c64d81125a0f4ae0be8, type: 2}
+  - {fileID: 1207601820119078, guid: 4c7c60e718fab1845961ab2b03925fa6, type: 2}
+  BoardLength: 7
   BoardWidth: 5
